@@ -45,14 +45,16 @@ function Model2({ orbitRef }) {
   const localRaycaster = useRef(new THREE.Raycaster())
   const mouseNDC = useRef(new THREE.Vector2())
 
-  // Center and offset model2 so it doesn't overlap model1
   useEffect(() => {
     if (!ref.current) return
-    const box = new THREE.Box3().setFromObject(ref.current)
-    const size = box.getSize(new THREE.Vector3())
-    const center = box.getCenter(new THREE.Vector3())
-    ref.current.position.sub(center)
+    // Scale first so bounding box reflects actual world size
     ref.current.scale.setScalar(0.02)
+    const box = new THREE.Box3().setFromObject(ref.current)
+    const center = box.getCenter(new THREE.Vector3())
+    const size = box.getSize(new THREE.Vector3())
+    // Center at origin, then nudge slightly so it's not buried inside model1
+    ref.current.position.sub(center)
+    ref.current.position.x += size.x
   }, [scene])
 
   // Global drag-move, drag-end, and wheel-while-dragging handlers
