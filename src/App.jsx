@@ -4,7 +4,7 @@ import { useGLTF, OrbitControls, Environment } from '@react-three/drei'
 import * as THREE from 'three'
 
 function Model() {
-  const { scene } = useGLTF('/model.glb')
+  const { scene } = useGLTF(import.meta.env.BASE_URL + 'model.glb')
   const { camera, controls } = useThree()
   const ref = useRef()
 
@@ -36,7 +36,7 @@ function Model() {
 }
 
 function Model2({ orbitRef }) {
-  const { scene } = useGLTF('/model2.glb')
+  const { scene } = useGLTF(import.meta.env.BASE_URL + 'model2.glb')
   const { camera, gl } = useThree()
   const ref = useRef()
   const dragging = useRef(false)
