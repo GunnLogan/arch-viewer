@@ -55,6 +55,7 @@ function Model2({ orbitRef }) {
     // Center at origin, then nudge slightly so it's not buried inside model1
     ref.current.position.sub(center)
     ref.current.position.x += size.x
+    ref.current.position.y += size.y * 2
   }, [scene])
 
   // Global drag-move, drag-end, and wheel-while-dragging handlers
