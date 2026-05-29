@@ -52,7 +52,6 @@ function Model2({ orbitRef }) {
     const size = box.getSize(new THREE.Vector3())
     const center = box.getCenter(new THREE.Vector3())
     ref.current.position.sub(center)
-    ref.current.position.x += size.x * 1.2
     ref.current.scale.setScalar(0.02)
   }, [scene])
 
