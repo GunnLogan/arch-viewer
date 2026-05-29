@@ -132,7 +132,11 @@ export default function App() {
     >
       <Suspense fallback={null}>
         <Model />
+      </Suspense>
+      <Suspense fallback={null}>
         <Model2 orbitRef={orbitRef} />
+      </Suspense>
+      <Suspense fallback={null}>
         <Environment preset="apartment" background={false} />
       </Suspense>
       <OrbitControls ref={orbitRef} makeDefault />
